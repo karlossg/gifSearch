@@ -21,13 +21,13 @@ App = React.createClass({
   },
 
   getGif: function(searchingText, callback) {  
-    var url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;  
-    var xhr = new XMLHttpRequest();  
+    const url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;  
+    const xhr = new XMLHttpRequest();  
     xhr.open('GET', url);
     xhr.onload = function() {
         if (xhr.status === 200) {
-           var data = JSON.parse(xhr.responseText).data; 
-            var gif = {  
+           const data = JSON.parse(xhr.responseText).data; 
+           const gif = {  
                 url: data.fixed_width_downsampled_url,
                 sourceUrl: data.url
             };
