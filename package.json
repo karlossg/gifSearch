@@ -4,8 +4,12 @@
   "description": "gif search",
   "main": "index.js",
   "scripts": {
+    "start": "http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Karol Grabowski",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
 }
