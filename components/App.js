@@ -28,15 +28,6 @@ App = React.createClass({
         });
       })
       .catch(console.log('errr'));
-
-    // , function(gif) {
-    //     this.setState({
-    //       loading: false,
-    //       gif: gif,
-    //       searchingText: searchingText
-    //     });
-    //   }.bind(this)
-    // );
   },
 
   getGif: function(searchingText, callback) {
