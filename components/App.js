@@ -14,13 +14,7 @@ App = React.createClass({
     this.setState({
       loading: true
     });
-    this.getGif(searchingText);
-  },
-
-  getGif: function(searchingText) {
-    const url = `${GIPHY_API_URL}/v1/gifs/random?api_key=${GIPHY_PUB_KEY}&tag=${searchingText}`;
-
-    fetch(url)
+    this.getGif(searchingText)
       .then(response => {
         if (response.status !== 200) {
           console.log('There was a problemm with response. Status Code: ' + response.status);
@@ -41,6 +35,12 @@ App = React.createClass({
       .catch(error => {
         this.setState({ loading: false });
       });
+  },
+
+  getGif: function(searchingText) {
+    const url = `${GIPHY_API_URL}/v1/gifs/random?api_key=${GIPHY_PUB_KEY}&tag=${searchingText}`;
+
+    return fetch(url);
   },
 
   render: function() {
