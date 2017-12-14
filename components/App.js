@@ -16,23 +16,25 @@ App = React.createClass({
     });
     this.getGif(searchingText)
       .then(response => {
-        if (response.status !== 200) {
-          console.log('There was a problemm with response. Status Code: ' + response.status);
-          return;
+        if (response.status >= 200 && response.status < 300) {
+          return response.json();
+        } else {
+          return new Error(response.statusText);
         }
-        response.json().then(data => {
-          const gif = {
-            url: data.data.fixed_width_downsampled_url,
-            sourceUrl: data.data.url
-          };
-          this.setState({
-            loading: false,
-            gif: gif,
-            searchingText: searchingText
-          });
+      })
+      .then(response => {
+        const gif = {
+          url: response.data.fixed_width_downsampled_url,
+          sourceUrl: response.data.url
+        };
+        this.setState({
+          loading: false,
+          gif: gif,
+          searchingText: searchingText
         });
       })
       .catch(error => {
+        console.log('Request failed', error);
         this.setState({ loading: false });
       });
   },
