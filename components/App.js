@@ -16,11 +16,7 @@ App = React.createClass({
     });
     this.getGif(searchingText)
       .then(response => {
-        if (response.status >= 200 && response.status < 300) {
-          return response.json();
-        } else {
-          return new Error(response.statusText);
-        }
+        return response.json();
       })
       .then(response => {
         const gif = {
